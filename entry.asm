@@ -21,6 +21,7 @@ segment readable executable
         mov rsi, userinput
         mov rdx, 200
         syscall
+        mov r10, rax
 
         mov rax, 1
         mov rdi, 1
@@ -37,7 +38,7 @@ segment readable executable
         mov rax, 1
         mov rdi, 1
         mov rsi, userinput
-        mov rdx, 200
+        mov rdx, r10
         syscall
 
         mov rax, 60
@@ -46,13 +47,13 @@ segment readable executable
         
 segment readable writable
 
-    entryprompt db "Enter stm: ", 0
+    entryprompt db "Enter stm: "
     entryprompt_len = $ - entryprompt
 
     userinput rb 200
 
-    msg1 db "You have been entered: ", 0
+    msg1 db "You have been entered: "
     msg1_len = $ - msg1
 
-    newline db " ", 10, 0
+    newline db " ", 10
     newline_len = $ - newline
